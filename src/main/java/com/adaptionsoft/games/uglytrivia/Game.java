@@ -3,7 +3,7 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.ArrayList;
 
 public class Game {
-	private final Questions questions = new Questions(this);
+	private final Questions questions = new Questions();
 	// 5 methods
     ArrayList<String> players = new ArrayList<>();
     // 3 methods
@@ -74,7 +74,7 @@ public class Game {
 						+ "'s new location is " 
 						+ places[currentPlayer]);
 				System.out.println("The category is " + currentCategory());
-				questions.askQuestion();
+				questions.askQuestion(currentCategory());
 			} else {
 				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
@@ -89,13 +89,13 @@ public class Game {
 					+ "'s new location is " 
 					+ places[currentPlayer]);
 			System.out.println("The category is " + currentCategory());
-			questions.askQuestion();
+			questions.askQuestion(currentCategory());
 		}
 		
 	}
 
 	// 2 refs.
-    String currentCategory() {
+    private String currentCategory() {
 		if (places[currentPlayer] == 0) return "Pop";
 		if (places[currentPlayer] == 4) return "Pop";
 		if (places[currentPlayer] == 8) return "Pop";
