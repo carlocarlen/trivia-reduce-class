@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
+	private final Questions questions = new Questions(this);
 	// 5 methods
     ArrayList<String> players = new ArrayList<>();
     // 3 methods
@@ -79,7 +80,7 @@ public class Game {
 						+ "'s new location is " 
 						+ places[currentPlayer]);
 				System.out.println("The category is " + currentCategory());
-				askQuestion();
+				questions.askQuestion();
 			} else {
 				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
@@ -94,25 +95,13 @@ public class Game {
 					+ "'s new location is " 
 					+ places[currentPlayer]);
 			System.out.println("The category is " + currentCategory());
-			askQuestion();
+			questions.askQuestion();
 		}
 		
 	}
 
-	// 4 ref. + 1 meth. ref.
-	private void askQuestion() {
-		if (currentCategory().equals("Pop"))
-			System.out.println(getPopQuestions().removeFirst());
-		if (currentCategory().equals("Science"))
-			System.out.println(getScienceQuestions().removeFirst());
-		if (currentCategory().equals("Sports"))
-			System.out.println(getSportsQuestions().removeFirst());
-		if (currentCategory().equals("Rock"))
-			System.out.println(getRockQuestions().removeFirst());
-	}
-	
 	// 2 refs.
-	private String currentCategory() {
+    String currentCategory() {
 		if (places[currentPlayer] == 0) return "Pop";
 		if (places[currentPlayer] == 4) return "Pop";
 		if (places[currentPlayer] == 8) return "Pop";
