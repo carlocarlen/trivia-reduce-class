@@ -14,10 +14,10 @@ public class Game {
 	boolean[] inPenaltyBox  = new boolean[6];
 
 	// constructor + 1 method
-    LinkedList<String> popQuestions = new LinkedList<>();
-	LinkedList<String> scienceQuestions = new LinkedList<>();
-	LinkedList<String> sportsQuestions = new LinkedList<>();
-	LinkedList<String> rockQuestions = new LinkedList<>();
+	private LinkedList<String> popQuestions = new LinkedList<>();
+	private LinkedList<String> scienceQuestions = new LinkedList<>();
+	private LinkedList<String> sportsQuestions = new LinkedList<>();
+	private LinkedList<String> rockQuestions = new LinkedList<>();
 
 	// 5 methods
     int currentPlayer = 0;
@@ -26,10 +26,10 @@ public class Game {
     
     public  Game(){
     	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+			getPopQuestions().addLast("Pop Question " + i);
+			getScienceQuestions().addLast(("Science Question " + i));
+			getSportsQuestions().addLast(("Sports Question " + i));
+			getRockQuestions().addLast(createRockQuestion(i));
     	}
     }
 
@@ -102,13 +102,13 @@ public class Game {
 	// 4 ref. + 1 meth. ref.
 	private void askQuestion() {
 		if (currentCategory().equals("Pop"))
-			System.out.println(popQuestions.removeFirst());
+			System.out.println(getPopQuestions().removeFirst());
 		if (currentCategory().equals("Science"))
-			System.out.println(scienceQuestions.removeFirst());
+			System.out.println(getScienceQuestions().removeFirst());
 		if (currentCategory().equals("Sports"))
-			System.out.println(sportsQuestions.removeFirst());
+			System.out.println(getSportsQuestions().removeFirst());
 		if (currentCategory().equals("Rock"))
-			System.out.println(rockQuestions.removeFirst());		
+			System.out.println(getRockQuestions().removeFirst());
 	}
 	
 	// 2 refs.
@@ -181,5 +181,37 @@ public class Game {
 	// 2 refs.
 	private boolean didPlayerWin() {
 		return !(purses[currentPlayer] == 6);
+	}
+
+	public LinkedList<String> getPopQuestions() {
+		return popQuestions;
+	}
+
+	public void setPopQuestions(LinkedList<String> popQuestions) {
+		this.popQuestions = popQuestions;
+	}
+
+	public LinkedList<String> getScienceQuestions() {
+		return scienceQuestions;
+	}
+
+	public void setScienceQuestions(LinkedList<String> scienceQuestions) {
+		this.scienceQuestions = scienceQuestions;
+	}
+
+	public LinkedList<String> getSportsQuestions() {
+		return sportsQuestions;
+	}
+
+	public void setSportsQuestions(LinkedList<String> sportsQuestions) {
+		this.sportsQuestions = sportsQuestions;
+	}
+
+	public LinkedList<String> getRockQuestions() {
+		return rockQuestions;
+	}
+
+	public void setRockQuestions(LinkedList<String> rockQuestions) {
+		this.rockQuestions = rockQuestions;
 	}
 }
