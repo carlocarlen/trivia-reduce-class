@@ -17,13 +17,13 @@ public class Questions {
     // 4 ref. + 1 meth. ref.
     void askQuestion() {
         if (game.currentCategory().equals("Pop"))
-            System.out.println(game.getPopQuestions().removeFirst());
+            System.out.println(popQuestions.removeFirst());
         if (game.currentCategory().equals("Science"))
-            System.out.println(game.getScienceQuestions().removeFirst());
+            System.out.println(scienceQuestions.removeFirst());
         if (game.currentCategory().equals("Sports"))
-            System.out.println(game.getSportsQuestions().removeFirst());
+            System.out.println(sportsQuestions.removeFirst());
         if (game.currentCategory().equals("Rock"))
-            System.out.println(game.getRockQuestions().removeFirst());
+            System.out.println(rockQuestions.removeFirst());
     }
 
     public LinkedList<String> getPopQuestions() {
