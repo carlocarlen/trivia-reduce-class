@@ -14,11 +14,6 @@ public class Game {
     // 4 methods
 	boolean[] inPenaltyBox  = new boolean[6];
 
-	// constructor + 1 method
-	private LinkedList<String> popQuestions = new LinkedList<>();
-	private LinkedList<String> scienceQuestions = new LinkedList<>();
-	private LinkedList<String> sportsQuestions = new LinkedList<>();
-	private LinkedList<String> rockQuestions = new LinkedList<>();
 
 	// 5 methods
     int currentPlayer = 0;
@@ -173,34 +168,19 @@ public class Game {
 	}
 
 	public LinkedList<String> getPopQuestions() {
-		return popQuestions;
-	}
-
-	public void setPopQuestions(LinkedList<String> popQuestions) {
-		this.popQuestions = popQuestions;
+		return questions.getPopQuestions();
 	}
 
 	public LinkedList<String> getScienceQuestions() {
-		return scienceQuestions;
-	}
-
-	public void setScienceQuestions(LinkedList<String> scienceQuestions) {
-		this.scienceQuestions = scienceQuestions;
+		return questions.getScienceQuestions();
 	}
 
 	public LinkedList<String> getSportsQuestions() {
-		return sportsQuestions;
-	}
-
-	public void setSportsQuestions(LinkedList<String> sportsQuestions) {
-		this.sportsQuestions = sportsQuestions;
+		return questions.getSportsQuestions();
 	}
 
 	public LinkedList<String> getRockQuestions() {
-		return rockQuestions;
+		return questions.getRockQuestions();
 	}
 
-	public void setRockQuestions(LinkedList<String> rockQuestions) {
-		this.rockQuestions = rockQuestions;
-	}
 }
