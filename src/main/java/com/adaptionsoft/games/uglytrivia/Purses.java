@@ -8,4 +8,8 @@ public class Purses {
         return purses;
     }
 
+    public int getPurse(int index) {
+        return purses[index];
+    }
+
 }
