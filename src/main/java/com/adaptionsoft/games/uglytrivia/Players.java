@@ -6,6 +6,15 @@ import java.util.List;
 public class Players {
 
     private final List<String> players = new ArrayList<>();
+    private int currentPlayer = 0;
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 
     public void add(String playerName) {
         players.add(playerName);
