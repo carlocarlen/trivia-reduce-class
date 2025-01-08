@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 	private final Questions questions = new Questions();
+	private final CategoryService categoryService = new CategoryService(this);
 	// 5 methods
     ArrayList<String> players = new ArrayList<>();
     // 3 methods
@@ -73,8 +74,8 @@ public class Game {
 				System.out.println(players.get(currentPlayer) 
 						+ "'s new location is " 
 						+ places[currentPlayer]);
-				System.out.println("The category is " + currentCategory());
-				questions.askQuestion(currentCategory());
+				System.out.println("The category is " + categoryService.currentCategory());
+				questions.askQuestion(categoryService.currentCategory());
 			} else {
 				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
@@ -88,24 +89,10 @@ public class Game {
 			System.out.println(players.get(currentPlayer) 
 					+ "'s new location is " 
 					+ places[currentPlayer]);
-			System.out.println("The category is " + currentCategory());
-			questions.askQuestion(currentCategory());
+			System.out.println("The category is " + categoryService.currentCategory());
+			questions.askQuestion(categoryService.currentCategory());
 		}
 		
-	}
-
-	// 2 refs.
-    private String currentCategory() {
-		if (places[currentPlayer] == 0) return "Pop";
-		if (places[currentPlayer] == 4) return "Pop";
-		if (places[currentPlayer] == 8) return "Pop";
-		if (places[currentPlayer] == 1) return "Science";
-		if (places[currentPlayer] == 5) return "Science";
-		if (places[currentPlayer] == 9) return "Science";
-		if (places[currentPlayer] == 2) return "Sports";
-		if (places[currentPlayer] == 6) return "Sports";
-		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
 	}
 
 	// 4+ refs.
@@ -166,4 +153,11 @@ public class Game {
 		return !(purses[currentPlayer] == 6);
 	}
 
+	public int[] getPlaces() {
+		return places;
+	}
+
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
 }
