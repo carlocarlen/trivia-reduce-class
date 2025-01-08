@@ -6,7 +6,7 @@ public class Game {
     // 3 methods
 	int[] places = new int[6];
     // 3 methods
-	private int[] purses  = new int[6];
+	private final int[] purses  = new int[6];
     // 4 methods
 	boolean[] inPenaltyBox  = new boolean[6];
 
