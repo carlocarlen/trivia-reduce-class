@@ -24,8 +24,8 @@ public class Players {
         return players.size();
     }
 
-    public String get(int index) {
-        return players.get(index);
+    public String getCurrentPlayerName() {
+        return players.get(currentPlayer);
     }
 
 }
