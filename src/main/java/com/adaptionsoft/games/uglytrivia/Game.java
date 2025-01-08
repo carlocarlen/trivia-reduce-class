@@ -32,7 +32,7 @@ public class Game {
 
 	// 1 meth ref.
 	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
+		return (players.size() >= 2);
 	}
 
 	// 4 refs. + 1 meth. ref
@@ -40,9 +40,9 @@ public class Game {
 
 
 		players.add(playerName);
-	    places[howManyPlayers()] = 0;
-	    purses[howManyPlayers()] = 0;
-	    inPenaltyBox[howManyPlayers()] = false;
+		places[players.size()] = 0;
+		purses[players.size()] = 0;
+		inPenaltyBox[players.size()] = false;
 	    
 	    System.out.println(playerName + " was added");
 		System.out.println("They are player number " + players.size());
@@ -50,9 +50,6 @@ public class Game {
 	}
 
 	// 1 ref
-	public int howManyPlayers() {
-		return players.size();
-	}
 
 	// 4+ ref
 	public void roll(int roll) {
