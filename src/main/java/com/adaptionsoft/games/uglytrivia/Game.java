@@ -37,7 +37,7 @@ public class Game {
 
 		players.add(playerName);
 		places[players.size()] = 0;
-		purses.getPurses()[players.size()] = 0;
+		purses.setPurse(players.size(),0);
 		inPenaltyBox[players.size()] = false;
 	    
 	    System.out.println(playerName + " was added");
@@ -103,7 +103,7 @@ public class Game {
 		if (inPenaltyBox[players.getCurrentPlayer()]){
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
-				purses.getPurses()[players.getCurrentPlayer()]++;
+				purses.increment(players.getCurrentPlayer());
 				System.out.println(players.getCurrentPlayerName()
 						+ " now has "
 						+ purses.getPurse(players.getCurrentPlayer())
@@ -123,7 +123,7 @@ public class Game {
 		} else {
 		
 			System.out.println("Answer was correct!!!!");
-			purses.getPurses()[players.getCurrentPlayer()]++;
+			purses.increment(players.getCurrentPlayer());
 			System.out.println(players.getCurrentPlayerName()
 					+ " now has "
 					+ purses.getPurse(players.getCurrentPlayer())
