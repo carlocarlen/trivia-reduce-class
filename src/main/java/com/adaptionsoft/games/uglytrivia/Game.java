@@ -10,9 +10,6 @@ public class Game {
     // 4 methods
 	boolean[] inPenaltyBox  = new boolean[6];
 
-
-	// 5 methods
-	private int currentPlayer = 0;
 	// 2 methods
     boolean isGettingOutOfPenaltyBox;
     
@@ -161,10 +158,10 @@ public class Game {
 	}
 
 	public int getCurrentPlayer() {
-		return currentPlayer;
+		return players.getCurrentPlayer();
 	}
 
 	public void setCurrentPlayer(int currentPlayer) {
-		this.currentPlayer = currentPlayer;
+		players.setCurrentPlayer(currentPlayer);
 	}
 }
