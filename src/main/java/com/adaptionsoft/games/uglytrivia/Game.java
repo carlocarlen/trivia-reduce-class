@@ -45,13 +45,13 @@ public class Game {
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
 	    System.out.println(playerName + " was added");
-		System.out.println("They are player number " + players.getPlayers().size());
+		System.out.println("They are player number " + players.size());
 		return true;
 	}
 
 	// 1 ref
 	public int howManyPlayers() {
-		return players.getPlayers().size();
+		return players.size();
 	}
 
 	// 4+ ref
@@ -118,12 +118,12 @@ public class Game {
 				
 				boolean winner = didPlayerWin();
 				currentPlayer++;
-				if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+				if (currentPlayer == players.size()) currentPlayer = 0;
 				
 				return winner;
 			} else {
 				currentPlayer++;
-				if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+				if (currentPlayer == players.size()) currentPlayer = 0;
 				return true;
 			}
 			
@@ -140,7 +140,7 @@ public class Game {
 			
 			boolean winner = didPlayerWin();
 			currentPlayer++;
-			if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+			if (currentPlayer == players.size()) currentPlayer = 0;
 			
 			return winner;
 		}
@@ -153,7 +153,7 @@ public class Game {
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;
-		if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+		if (currentPlayer == players.size()) currentPlayer = 0;
 		return true;
 	}
 
