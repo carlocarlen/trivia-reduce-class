@@ -3,10 +3,9 @@ package com.adaptionsoft.games.uglytrivia;
 public class Game {
 	private final Questions questions = new Questions();
 	private final Players players = new Players();
+	private final Purses purses = new Purses();
     // 3 methods
 	int[] places = new int[6];
-    // 3 methods
-	private final int[] purses  = new int[6];
     // 4 methods
 	boolean[] inPenaltyBox  = new boolean[6];
 
@@ -154,7 +153,7 @@ public class Game {
 	}
 
 	public int[] getPurses() {
-		return purses;
+		return purses.getPurses();
 	}
 
 }
