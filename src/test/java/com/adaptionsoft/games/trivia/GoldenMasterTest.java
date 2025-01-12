@@ -1,32 +1,35 @@
 package com.adaptionsoft.games.trivia;
 
 import com.adaptionsoft.games.uglytrivia.Game;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Random;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GoldenMasterFirstTest {
+public class GoldenMasterTest {
 
-    @Test
-    void goldenMasterFirst() {
+    // Picking some random seed and the corresponding result, always with 3 players
+    @ParameterizedTest
+    @MethodSource("seedsAndOutput")
+    void goldenMasterFirst(int randomSeed, String expectedOutput) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-
         Game aGame = new Game(new PrintStream(outputStream));
+
         aGame.add("Chet");
         aGame.add("Pat");
         aGame.add("Sue");
 
-        Random rand = new Random(1);
+        Random rand = new Random(randomSeed);
 
         boolean notAWinner;
 
         do {
-
             aGame.roll(rand.nextInt(5) + 1);
 
             if (rand.nextInt(9) == 7) {
@@ -34,18 +37,21 @@ public class GoldenMasterFirstTest {
             } else {
                 notAWinner = aGame.wasCorrectlyAnswered();
             }
-
-
-
         } while (notAWinner);
 
         String actualOutput = outputStream.toString().replace("\r\n", "\n");
 
-        assertEquals(expectedOutputFirst, actualOutput);
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
-    private final String expectedOutputFirst = """
+    private static Stream<Arguments> seedsAndOutput() {
+        return Stream.of(
+                Arguments.of(1, expectedOutputFirst)
+        );
+    }
+
+    private static final String expectedOutputFirst = """
 Chet was added
 They are player number 1
 Pat was added
