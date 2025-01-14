@@ -10,7 +10,8 @@ public class Game {
 	
     private final ArrayList<String> players = new ArrayList<>();
     private final int[] places = new int[6];
-    int[] purses  = new int[6];
+	private final GameRoller gameRoller = new GameRoller(this);
+	int[] purses  = new int[6];
     private final boolean[] inPenaltyBox  = new boolean[6];
     
     LinkedList<String> popQuestions = new LinkedList<>();
@@ -57,42 +58,10 @@ public class Game {
 	}
 
 	public void roll(int roll) {
-		getPrintStream().println(getPlayers().get(getCurrentPlayer()) + " is the current player");
-		getPrintStream().println("They have rolled a " + roll);
-		
-		if (getInPenaltyBox()[getCurrentPlayer()]) {
-			if (roll % 2 != 0) {
-				isGettingOutOfPenaltyBox = true;
-				
-				getPrintStream().println(getPlayers().get(getCurrentPlayer()) + " is getting out of the penalty box");
-				getPlaces()[getCurrentPlayer()] = getPlaces()[getCurrentPlayer()] + roll;
-				if (getPlaces()[getCurrentPlayer()] > 11) getPlaces()[getCurrentPlayer()] = getPlaces()[getCurrentPlayer()] - 12;
-				
-				getPrintStream().println(getPlayers().get(getCurrentPlayer())
-						+ "'s new location is " 
-						+ getPlaces()[getCurrentPlayer()]);
-				getPrintStream().println("The category is " + currentCategory());
-				askQuestion();
-			} else {
-				getPrintStream().println(getPlayers().get(getCurrentPlayer()) + " is not getting out of the penalty box");
-				isGettingOutOfPenaltyBox = false;
-				}
-			
-		} else {
-		
-			getPlaces()[getCurrentPlayer()] = getPlaces()[getCurrentPlayer()] + roll;
-			if (getPlaces()[getCurrentPlayer()] > 11) getPlaces()[getCurrentPlayer()] = getPlaces()[getCurrentPlayer()] - 12;
-			
-			getPrintStream().println(getPlayers().get(getCurrentPlayer())
-					+ "'s new location is " 
-					+ getPlaces()[getCurrentPlayer()]);
-			getPrintStream().println("The category is " + currentCategory());
-			askQuestion();
-		}
-		
+		gameRoller.roll(roll);
 	}
 
-	private void askQuestion() {
+	void askQuestion() {
 		if (currentCategory().equals("Pop"))
 			getPrintStream().println(popQuestions.removeFirst());
 		if (currentCategory().equals("Science"))
@@ -104,7 +73,7 @@ public class Game {
 	}
 	
 	
-	private String currentCategory() {
+	String currentCategory() {
 		if (getPlaces()[getCurrentPlayer()] == 0) return "Pop";
 		if (getPlaces()[getCurrentPlayer()] == 4) return "Pop";
 		if (getPlaces()[getCurrentPlayer()] == 8) return "Pop";
@@ -194,5 +163,9 @@ public class Game {
 
 	public boolean isGettingOutOfPenaltyBox() {
 		return isGettingOutOfPenaltyBox;
+	}
+
+	public void setGettingOutOfPenaltyBox(boolean isGettingOutOfPenaltyBox) {
+		this.isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox;
 	}
 }
