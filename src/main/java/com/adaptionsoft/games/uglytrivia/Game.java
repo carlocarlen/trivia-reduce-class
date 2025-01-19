@@ -8,8 +8,10 @@ public class Game {
 
 	// 6 methods
 	private final PrintStream printStream;
+	// 2 methods: constructor and roll
+    private final Questions questions;
 
-	// 5 methods
+    // 5 methods
     ArrayList<String> players = new ArrayList<>();
 	// 3 methods: add, roll, currentCategory
     int[] places = new int[6];
@@ -34,6 +36,7 @@ public class Game {
 
     public  Game(PrintStream printStream){
         this.printStream = printStream;
+		this.questions = new Questions(this, printStream);
         for (int i = 0; i < 50; i++) {
 			getPopQuestions().addLast("Pop Question " + i);
 			getScienceQuestions().addLast(("Science Question " + i));
@@ -88,7 +91,7 @@ public class Game {
 						+ "'s new location is " 
 						+ places[currentPlayer]);
 				printStream.println("The category is " + currentCategory());
-				askQuestion();
+                questions.askQuestion();
 			} else {
 				printStream.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
@@ -103,25 +106,13 @@ public class Game {
 					+ "'s new location is " 
 					+ places[currentPlayer]);
 			printStream.println("The category is " + currentCategory());
-			askQuestion();
+            questions.askQuestion();
 		}
 		
 	}
-
-	// 5 fields questions and printStream + currentCategory()
-	private void askQuestion() {
-		if (currentCategory().equals("Pop"))
-			printStream.println(getPopQuestions().removeFirst());
-		if (currentCategory().equals("Science"))
-			printStream.println(getScienceQuestions().removeFirst());
-		if (currentCategory().equals("Sports"))
-			printStream.println(getSportsQuestions().removeFirst());
-		if (currentCategory().equals("Rock"))
-			printStream.println(getRockQuestions().removeFirst());
-	}
 	
 	// 2 fields
-	private String currentCategory() {
+    String currentCategory() {
 		if (places[currentPlayer] == 0) return "Pop";
 		if (places[currentPlayer] == 4) return "Pop";
 		if (places[currentPlayer] == 8) return "Pop";
