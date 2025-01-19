@@ -19,13 +19,13 @@ public class Game {
     boolean[] inPenaltyBox  = new boolean[6];
 
 	// 2 methods: constructor and askQuestion
-    LinkedList<String> popQuestions = new LinkedList<>();
+	private LinkedList<String> popQuestions = new LinkedList<>();
 	// 2 methods: constructor and askQuestion
-	LinkedList<String> scienceQuestions = new LinkedList<>();
+	private LinkedList<String> scienceQuestions = new LinkedList<>();
 	// 2 methods: constructor and askQuestion
-	LinkedList<String> sportsQuestions = new LinkedList<>();
+	private LinkedList<String> sportsQuestions = new LinkedList<>();
 	// 2 methods: constructor and askQuestion
-	LinkedList<String> rockQuestions = new LinkedList<>();
+	private LinkedList<String> rockQuestions = new LinkedList<>();
 
 	// 5 methods
     int currentPlayer = 0;
@@ -35,10 +35,10 @@ public class Game {
     public  Game(PrintStream printStream){
         this.printStream = printStream;
         for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+			getPopQuestions().addLast("Pop Question " + i);
+			getScienceQuestions().addLast(("Science Question " + i));
+			getSportsQuestions().addLast(("Sports Question " + i));
+			getRockQuestions().addLast(createRockQuestion(i));
     	}
     }
 
@@ -111,13 +111,13 @@ public class Game {
 	// 5 fields questions and printStream + currentCategory()
 	private void askQuestion() {
 		if (currentCategory().equals("Pop"))
-			printStream.println(popQuestions.removeFirst());
+			printStream.println(getPopQuestions().removeFirst());
 		if (currentCategory().equals("Science"))
-			printStream.println(scienceQuestions.removeFirst());
+			printStream.println(getScienceQuestions().removeFirst());
 		if (currentCategory().equals("Sports"))
-			printStream.println(sportsQuestions.removeFirst());
+			printStream.println(getSportsQuestions().removeFirst());
 		if (currentCategory().equals("Rock"))
-			printStream.println(rockQuestions.removeFirst());		
+			printStream.println(getRockQuestions().removeFirst());
 	}
 	
 	// 2 fields
@@ -189,5 +189,37 @@ public class Game {
 	// 2 fields
 	private boolean didPlayerWin() {
 		return !(purses[currentPlayer] == 6);
+	}
+
+	public LinkedList<String> getPopQuestions() {
+		return popQuestions;
+	}
+
+	public void setPopQuestions(LinkedList<String> popQuestions) {
+		this.popQuestions = popQuestions;
+	}
+
+	public LinkedList<String> getScienceQuestions() {
+		return scienceQuestions;
+	}
+
+	public void setScienceQuestions(LinkedList<String> scienceQuestions) {
+		this.scienceQuestions = scienceQuestions;
+	}
+
+	public LinkedList<String> getSportsQuestions() {
+		return sportsQuestions;
+	}
+
+	public void setSportsQuestions(LinkedList<String> sportsQuestions) {
+		this.sportsQuestions = sportsQuestions;
+	}
+
+	public LinkedList<String> getRockQuestions() {
+		return rockQuestions;
+	}
+
+	public void setRockQuestions(LinkedList<String> rockQuestions) {
+		this.rockQuestions = rockQuestions;
 	}
 }
