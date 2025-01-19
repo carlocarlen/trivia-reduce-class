@@ -4,7 +4,6 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 
 public class Questions {
-    private final Game game;
     private final PrintStream printStream;
 
     private final LinkedList<String> popQuestions = new LinkedList<>();
@@ -12,20 +11,19 @@ public class Questions {
     private final LinkedList<String> sportsQuestions = new LinkedList<>();
     private final LinkedList<String> rockQuestions = new LinkedList<>();
 
-    public Questions(Game game, PrintStream printStream) {
-        this.game = game;
+    public Questions(PrintStream printStream) {
         this.printStream = printStream;
     }
 
     // 5 fields questions and printStream + currentCategory()
-    void askQuestion() {
-        if (game.currentCategory().equals("Pop"))
+    void askQuestion(String category) {
+        if (category.equals("Pop"))
             printStream.println(popQuestions.removeFirst());
-        if (game.currentCategory().equals("Science"))
+        if (category.equals("Science"))
             printStream.println(scienceQuestions.removeFirst());
-        if (game.currentCategory().equals("Sports"))
+        if (category.equals("Sports"))
             printStream.println(sportsQuestions.removeFirst());
-        if (game.currentCategory().equals("Rock"))
+        if (category.equals("Rock"))
             printStream.println(rockQuestions.removeFirst());
     }
 

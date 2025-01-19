@@ -26,7 +26,7 @@ public class Game {
 
     public  Game(PrintStream printStream){
         this.printStream = printStream;
-		this.questions = new Questions(this, printStream);
+		this.questions = new Questions(printStream);
         for (int i = 0; i < 50; i++) {
 			questions.getPopQuestions().addLast("Pop Question " + i);
 			questions.getScienceQuestions().addLast(("Science Question " + i));
@@ -81,7 +81,7 @@ public class Game {
 						+ "'s new location is " 
 						+ places[currentPlayer]);
 				printStream.println("The category is " + currentCategory());
-                questions.askQuestion();
+                questions.askQuestion(currentCategory());
 			} else {
 				printStream.println(players.get(currentPlayer) + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
@@ -96,7 +96,7 @@ public class Game {
 					+ "'s new location is " 
 					+ places[currentPlayer]);
 			printStream.println("The category is " + currentCategory());
-            questions.askQuestion();
+            questions.askQuestion(currentCategory());
 		}
 		
 	}
