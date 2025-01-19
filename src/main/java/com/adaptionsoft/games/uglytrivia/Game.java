@@ -2,7 +2,6 @@ package com.adaptionsoft.games.uglytrivia;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Game {
 
@@ -29,10 +28,10 @@ public class Game {
         this.printStream = printStream;
 		this.questions = new Questions(this, printStream);
         for (int i = 0; i < 50; i++) {
-			getPopQuestions().addLast("Pop Question " + i);
-			getScienceQuestions().addLast(("Science Question " + i));
-			getSportsQuestions().addLast(("Sports Question " + i));
-			getRockQuestions().addLast(createRockQuestion(i));
+			questions.getPopQuestions().addLast("Pop Question " + i);
+			questions.getScienceQuestions().addLast(("Science Question " + i));
+			questions.getSportsQuestions().addLast(("Sports Question " + i));
+			questions.getRockQuestions().addLast(createRockQuestion(i));
     	}
     }
 
@@ -171,22 +170,6 @@ public class Game {
 	// 2 fields
 	private boolean didPlayerWin() {
 		return !(purses[currentPlayer] == 6);
-	}
-
-	public LinkedList<String> getPopQuestions() {
-		return questions.getPopQuestions();
-	}
-
-	public LinkedList<String> getScienceQuestions() {
-		return questions.getScienceQuestions();
-	}
-
-	public LinkedList<String> getSportsQuestions() {
-		return questions.getSportsQuestions();
-	}
-
-	public LinkedList<String> getRockQuestions() {
-		return questions.getRockQuestions();
 	}
 
 }

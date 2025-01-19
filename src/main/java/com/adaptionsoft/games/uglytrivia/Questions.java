@@ -20,13 +20,13 @@ public class Questions {
     // 5 fields questions and printStream + currentCategory()
     void askQuestion() {
         if (game.currentCategory().equals("Pop"))
-            printStream.println(game.getPopQuestions().removeFirst());
+            printStream.println(popQuestions.removeFirst());
         if (game.currentCategory().equals("Science"))
-            printStream.println(game.getScienceQuestions().removeFirst());
+            printStream.println(scienceQuestions.removeFirst());
         if (game.currentCategory().equals("Sports"))
-            printStream.println(game.getSportsQuestions().removeFirst());
+            printStream.println(sportsQuestions.removeFirst());
         if (game.currentCategory().equals("Rock"))
-            printStream.println(game.getRockQuestions().removeFirst());
+            printStream.println(rockQuestions.removeFirst());
     }
 
     public LinkedList<String> getPopQuestions() {
