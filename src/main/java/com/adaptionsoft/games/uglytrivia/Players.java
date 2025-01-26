@@ -11,4 +11,8 @@ public class Players {
         return players;
     }
 
+    public void add(String playerName) {
+        players.add(playerName);
+    }
+
 }
