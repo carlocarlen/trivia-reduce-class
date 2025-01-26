@@ -15,4 +15,8 @@ public class Players {
         players.add(playerName);
     }
 
+    public int size() {
+        return players.size();
+    }
+
 }

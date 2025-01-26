@@ -47,12 +47,12 @@ public class Game {
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
 	    printStream.println(playerName + " was added");
-		printStream.println("They are player number " + players.getPlayers().size());
+		printStream.println("They are player number " + players.size());
 		return true;
 	}
 	
 	public int howManyPlayers() {
-		return players.getPlayers().size();
+		return players.size();
 	}
 
 	public void roll(int roll) {
@@ -128,12 +128,12 @@ public class Game {
 				
 				boolean winner = didPlayerWin();
 				currentPlayer++;
-				if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+				if (currentPlayer == players.size()) currentPlayer = 0;
 				
 				return winner;
 			} else {
 				currentPlayer++;
-				if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+				if (currentPlayer == players.size()) currentPlayer = 0;
 				return true;
 			}
 			
@@ -150,7 +150,7 @@ public class Game {
 			
 			boolean winner = didPlayerWin();
 			currentPlayer++;
-			if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+			if (currentPlayer == players.size()) currentPlayer = 0;
 			
 			return winner;
 		}
@@ -162,7 +162,7 @@ public class Game {
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;
-		if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
+		if (currentPlayer == players.size()) currentPlayer = 0;
 		return true;
 	}
 
