@@ -28,4 +28,8 @@ public class Players {
         return players.get(currentPlayer);
     }
 
+    public void setNextPlayer() {
+        setCurrentPlayer(getCurrentPlayer() + 1);
+        if (getCurrentPlayer() == size()) setCurrentPlayer(0);
+    }
 }
