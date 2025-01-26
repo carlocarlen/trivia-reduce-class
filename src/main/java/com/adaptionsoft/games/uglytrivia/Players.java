@@ -12,10 +12,6 @@ public class Players {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(int currentPlayer) {
-        this.currentPlayer = currentPlayer;
-    }
-
     public void add(String playerName) {
         players.add(playerName);
     }
@@ -29,7 +25,7 @@ public class Players {
     }
 
     public void setNextPlayer() {
-        setCurrentPlayer(getCurrentPlayer() + 1);
-        if (getCurrentPlayer() == size()) setCurrentPlayer(0);
+        this.currentPlayer++;
+        if (currentPlayer == players.size()) this.currentPlayer = 0;
     }
 }
