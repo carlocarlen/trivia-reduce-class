@@ -7,10 +7,6 @@ public class Players {
 
     private final List<String> players = new ArrayList<>();
 
-    public List<String> getPlayers() {
-        return players;
-    }
-
     public void add(String playerName) {
         players.add(playerName);
     }
