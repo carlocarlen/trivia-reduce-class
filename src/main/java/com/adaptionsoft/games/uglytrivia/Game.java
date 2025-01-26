@@ -17,7 +17,6 @@ public class Game {
 	LinkedList<String> sportsQuestions = new LinkedList<>();
 	LinkedList<String> rockQuestions = new LinkedList<>();
     
-    private int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(PrintStream printStream){
@@ -172,10 +171,10 @@ public class Game {
 	}
 
 	public int getCurrentPlayer() {
-		return currentPlayer;
+		return players.getCurrentPlayer();
 	}
 
 	public void setCurrentPlayer(int currentPlayer) {
-		this.currentPlayer = currentPlayer;
+		this.players.setCurrentPlayer(currentPlayer);
 	}
 }
