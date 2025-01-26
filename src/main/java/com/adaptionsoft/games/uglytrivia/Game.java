@@ -1,14 +1,14 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Game {
 	
 	private final PrintStream printStream;
 	
-    private final ArrayList<String> players = new ArrayList<>();
+	private final Players players = new Players();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -172,7 +172,7 @@ public class Game {
 		return !(purses[currentPlayer] == 6);
 	}
 
-	public ArrayList<String> getPlayers() {
-		return players;
+	public List<String> getPlayers() {
+		return players.getPlayers();
 	}
 }
